@@ -1,0 +1,28 @@
+{
+  "name": "f5oclock.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.4",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0",
+    "q": "^1.5.0",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dadsquatch/f5oclock.git"
+  },
+  "author": "IHB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dadsquatch/f5oclock/issues"
+  },
+  "homepage": "https://github.com/dadsquatch/f5oclock#readme",
+  "keywords": []
+}
