@@ -7,10 +7,12 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
+    "mongoose": "^4.11.8",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "q": "^1.5.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
   },
   "devDependencies": {},
   "scripts": {
