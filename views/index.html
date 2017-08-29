@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>f5oclock.com - Rising political threads</title>
 
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap -->
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Angular -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,12 +24,52 @@
   </head>
   <body>
     <div style="container" ng-app="myApp" ng-controller="myCtrl">
-      <h1>Hello, world!</h1>
-      <h1>{{message}}</h1>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-5"><h1>f5oclock.com</h1></div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th><i class="fa fa-comment-o" aria-hidden="true"></i></th>
+                <th><i class="fa fa-arrow-up" aria-hidden="true"></i></th>
+                <th>Submitted</th>
+                <th class="specifictd">Title</th>
+                <th>Source</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="post in posts | orderBy:'-upvoteCount'" ng-class="setBackgroundColor(post)">
+                <td>{{post.commentCount}}</td>
+                <td>{{post.upvoteCount}}</td>
+                <td><span am-time-ago="post.created_utc | amFromUnix"></span></td>
+                <td>{{post.title | cut:true:65:' ...'}}</td>
+                <td>{{post.domain}}</td>
+                <td style="min-width: 90px">
+                  <div class="btn-box"><a ng-href="https://reddit.com/{{post.commentLink}}" target="_blank"><button type="button" class="btn btn-link"><i class="fa fa-comment-o"></i></button></a></div>
+                  <div class="btn-box"><button type="button" class="btn btn-link" ngclipboard data-clipboard-text="{{post.url}}"><i class="fa fa-link" style="padding-top:5px;"></i></button></div>
+                  <div class="btn-box"><a ng-href="{{post.url}}" target="_blank"><button type="button" class="btn btn-link"><i class="fa fa-file-text-o" style="padding-top:4px;"></i></button></a></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">This application shows rising posts in the last 60 minutes. Posts colored in Green have reached what I consider to be trending news and Orange to be breaking.</p>
+      </div>
+    </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Javascript Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.js"></script>
+    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngclipboard/1.1.1/ngclipboard.min.js"></script>
     <script src="/js/main.js"></script>
   </body>
 </html>
