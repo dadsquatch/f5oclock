@@ -16,8 +16,8 @@ app.get('/', function (req, res) {
 
 app.get('/getPosts', function(req, res){
   var utcDate = Math.floor((new Date()).getTime() / 1000);
-  var oneHourAgo = utcDate - 3600;
-  var posts = newPost.find({ created_utc: { $gt : oneHourAgo }}).sort({ created_utc:1 }).limit(15).exec(function(err, docs){
+  var halfHourAgo = utcDate - 1800;
+  var posts = newPost.find({ created_utc: { $gt : halfHourAgo }}).sort({ created_utc:1 }).limit(20).exec(function(err, docs){
     if (err) {
       console.log(err);
     } else {
