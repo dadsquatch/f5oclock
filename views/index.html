@@ -55,7 +55,7 @@
                 <td><a ng-href="{{post.url}}" target="_blank" ng-attr-title="{{post.title}}" ng-cloak>{{post.title | cut:true:65:' ...'}}</a></td>
                 <td class="visible-lg" ng-cloak>{{post.domain}}</td>
                 <td style="min-width: 90px">
-                  <div class="btn-box"><a ng-href="https://reddit.com/{{post.commentLink}}" target="_blank"><button type="button" class="btn btn-link"><i class="fa fa-comment-o"></i></button></a></div>
+                  <div class="btn-box"><a ng-href="https://reddit.com{{post.commentLink}}" target="_blank"><button type="button" class="btn btn-link"><i class="fa fa-comment-o"></i></button></a></div>
                   <div class="btn-box"><button type="button" class="btn btn-link" ngclipboard data-clipboard-text="{{post.url}}"><i class="fa fa-link" style="padding-top:5px;"></i></button></div>
                 </td>
               </tr>
