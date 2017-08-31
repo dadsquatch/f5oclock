@@ -52,7 +52,7 @@
                 <td ng-cloak>{{post.commentCount}}</td>
                 <td ng-cloak>{{post.upvoteCount}}</td>
                 <td><span am-time-ago="post.created_utc | amFromUnix"  ng-cloak></span></td>
-                <td><a ng-href="{{post.url}}" target="_blank" ng-cloak>{{post.title | cut:true:65:' ...'}}</a></td>
+                <td><a ng-href="{{post.url}}" target="_blank" ng-attr-title="{{post.title}}" ng-cloak>{{post.title | cut:true:65:' ...'}}</a></td>
                 <td ng-cloak>{{post.domain}}</td>
                 <td style="min-width: 90px">
                   <div class="btn-box"><a ng-href="https://reddit.com/{{post.commentLink}}" target="_blank"><button type="button" class="btn btn-link"><i class="fa fa-comment-o"></i></button></a></div>
