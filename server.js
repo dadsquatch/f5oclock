@@ -18,8 +18,8 @@ app.get('/getPosts', function(req, res){
   var utcDate = Math.floor((new Date()).getTime() / 1000);
   // Depending on time per day 30 minute and 60 minute searches in database
   var timeAdjust = function(){
-    var today = new Date().getHours();
-    if (today >= 7 && today <= 19) {
+    var today = new Date().getUTCHours();
+    if (today >= 11 && today <= 23) {
       return '1800'
     } else {
       return '3600'

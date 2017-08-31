@@ -3,8 +3,8 @@ angular.module('myApp', ['angularMoment','ngclipboard'])
 
     $scope.message = firstFetch();
 
-    var today = new Date().getHours();
-    if (today >= 7 && today <= 19) {
+    var today = new Date().getUTCHours();
+    if (today >= 11 && today <= 23) {
       $scope.timeOfQuery = '30';
     } else {
       $scope.timeOfQuery = '60';
