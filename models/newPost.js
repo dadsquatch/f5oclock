@@ -16,6 +16,8 @@ var fetchedPost = new mongoose.Schema(
   }, { collection: 'newposts'}
 );
 
+fetchedPost.index({ fetchedAt: 1 }, { expireAfterSeconds: 3600 });
+
 var newPost = mongoose.model('newPost', fetchedPost);
 
 module.exports = newPost; // this is what you want
