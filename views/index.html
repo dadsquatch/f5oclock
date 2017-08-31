@@ -41,9 +41,9 @@
               <tr>
                 <th><i class="fa fa-comment-o" aria-hidden="true"></i></th>
                 <th><i class="fa fa-arrow-up" aria-hidden="true"></i></th>
-                <th>Submitted</th>
+                <th class="visible-lg">Submitted</th>
                 <th class="specifictd">Title</th>
-                <th>Source</th>
+                <th class="visible-lg">Source</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -51,9 +51,9 @@
               <tr ng-repeat="post in posts | orderBy:'-upvoteCount'" ng-class="setBackgroundColor(post)">
                 <td ng-cloak>{{post.commentCount}}</td>
                 <td ng-cloak>{{post.upvoteCount}}</td>
-                <td><span am-time-ago="post.created_utc | amFromUnix"  ng-cloak></span></td>
+                <td class="visible-lg"><span am-time-ago="post.created_utc | amFromUnix"  ng-cloak></span></td>
                 <td><a ng-href="{{post.url}}" target="_blank" ng-attr-title="{{post.title}}" ng-cloak>{{post.title | cut:true:65:' ...'}}</a></td>
-                <td ng-cloak>{{post.domain}}</td>
+                <td class="visible-lg" ng-cloak>{{post.domain}}</td>
                 <td style="min-width: 90px">
                   <div class="btn-box"><a ng-href="https://reddit.com/{{post.commentLink}}" target="_blank"><button type="button" class="btn btn-link"><i class="fa fa-comment-o"></i></button></a></div>
                   <div class="btn-box"><button type="button" class="btn btn-link" ngclipboard data-clipboard-text="{{post.url}}"><i class="fa fa-link" style="padding-top:5px;"></i></button></div>
