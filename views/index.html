@@ -49,11 +49,11 @@
             </thead>
             <tbody>
               <tr ng-repeat="post in posts | orderBy:'-upvoteCount'" ng-class="setBackgroundColor(post)">
-                <td>{{post.commentCount}}</td>
-                <td>{{post.upvoteCount}}</td>
-                <td><span am-time-ago="post.created_utc | amFromUnix"></span></td>
-                <td><a ng-href="{{post.url}}" target="_blank">{{post.title | cut:true:65:' ...'}}</a></td>
-                <td>{{post.domain}}</td>
+                <td ng-cloak>{{post.commentCount}}</td>
+                <td ng-cloak>{{post.upvoteCount}}</td>
+                <td><span am-time-ago="post.created_utc | amFromUnix"  ng-cloak></span></td>
+                <td><a ng-href="{{post.url}}" target="_blank" ng-cloak>{{post.title | cut:true:65:' ...'}}</a></td>
+                <td ng-cloak>{{post.domain}}</td>
                 <td style="min-width: 90px">
                   <div class="btn-box"><a ng-href="https://reddit.com/{{post.commentLink}}" target="_blank"><button type="button" class="btn btn-link"><i class="fa fa-comment-o"></i></button></a></div>
                   <div class="btn-box"><button type="button" class="btn btn-link" ngclipboard data-clipboard-text="{{post.url}}"><i class="fa fa-link" style="padding-top:5px;"></i></button></div>
