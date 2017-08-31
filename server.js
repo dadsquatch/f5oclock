@@ -16,8 +16,18 @@ app.get('/', function (req, res) {
 
 app.get('/getPosts', function(req, res){
   var utcDate = Math.floor((new Date()).getTime() / 1000);
-  var halfHourAgo = utcDate - 1800;
-  var posts = newPost.find({ created_utc: { $gt : halfHourAgo }}).sort({ created_utc:1 }).limit(20).exec(function(err, docs){
+  // Depending on time per day 30 minute and 60 minute searches in database
+  var timeAdjust = function(){
+    var today = new Date().getHours();
+    if (today >= 7 && today <= 19) {
+      return '1800'
+    } else {
+      return '3600'
+    }
+  }
+  var searchTime = utcDate - timeAdjust();
+  // Search the db and return up to 20 docs
+  var posts = newPost.find({ created_utc: { $gt : searchTime }}).sort({ created_utc:1 }).limit(20).exec(function(err, docs){
     if (err) {
       console.log(err);
     } else {
