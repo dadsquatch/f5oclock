@@ -2,7 +2,13 @@ angular.module('myApp', ['angularMoment','ngclipboard'])
   .controller('myCtrl', ['$scope','$interval', '$http', function($scope, $interval, $http) {
 
     $scope.message = firstFetch();
-    $scope.date = Date.now();
+
+    var today = new Date().getHours();
+    if (today >= 7 && today <= 19) {
+      $scope.timeOfQuery = '30';
+    } else {
+      $scope.timeOfQuery = '60';
+    }
 
     $scope.setBackgroundColor = function(value){
       if(value.upvoteCount >= 100 && value.upvoteCount < 250){
@@ -15,6 +21,7 @@ angular.module('myApp', ['angularMoment','ngclipboard'])
         return
       }
     }
+
 
     // Loop for fetching information from API routes
     $interval(function() {

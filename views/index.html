@@ -32,8 +32,8 @@
 
     </script>
   </head>
-  <body>
-    <div style="container" ng-app="myApp" ng-controller="myCtrl">
+  <body ng-app="myApp" ng-controller="myCtrl">
+    <div style="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <table class="table table-sm">
@@ -75,7 +75,7 @@
     </div>
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">This application shows rising posts in the last 30 minutes. Posts density of orange represents how fast the post is trending.<br />Built by <a href="http://www.dadsquatch.com/">Dadsquatch</a>.</p>
+        <p class="text-muted">Currently showing /r/politics/rising posts over the last {{timeOfQuery}} minutes. Posts density of orange represents how fast the post is trending.<br />Built by <a href="http://www.dadsquatch.com/">Dadsquatch</a>.</p>
       </div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
