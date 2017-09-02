@@ -37,16 +37,16 @@ function fetchPosts(callback) {
     })
     .catch(function (err) {
         console.log(err);
-        wait10sec();
+        wait5sec();
     });
-  }, 10000);
+  }, 5000);
 }
 
 //Run this script every 10 seconds
-function wait10sec(){
+function wait5sec(){
     setTimeout(function(){
         fetchPosts();
-    }, 10000);
+    }, 5000);
 }
 
-fetchPosts(wait10sec);
+fetchPosts(wait5sec);
