@@ -37,6 +37,7 @@ function fetchPosts(callback) {
     })
     .catch(function (err) {
         console.log(err);
+        wait10sec();
     });
   }, 10000);
 }
