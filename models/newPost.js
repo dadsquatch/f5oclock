@@ -1,5 +1,5 @@
+'use strict';
 var mongoose = require('mongoose');
-var db = mongoose.createConnection('localhost', 'test');
 
 var fetchedPost = new mongoose.Schema(
   {
@@ -12,7 +12,10 @@ var fetchedPost = new mongoose.Schema(
     upvoteCount: 'number',
     commentCount: 'number',
     author: 'string',
-    fetchedAt: 'number'
+    fetchedAt: {
+      type: Date,
+      default: new Date()
+    }
   }, { collection: 'newposts'}
 );
 

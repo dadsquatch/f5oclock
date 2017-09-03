@@ -1,11 +1,13 @@
+'use strict';
 var express = require('express');
+var Q = require('q');
 var app = express();
 var mongoose = require('mongoose');
+mongoose.Promise = Q.Promise;
+mongoose.connect('mongodb://localhost/f5oclock');
 var _ = require('lodash');
 var rp = require('request-promise');
-
 var newPost = require('./models/newPost');
-var db = mongoose.connect('mongodb://localhost/f5oclock');
 
 app.use(express.static(__dirname + '/public'));
 app.engine('html', require('ejs').renderFile);
@@ -27,15 +29,15 @@ app.get('/getPosts', function(req, res){
   }
   var searchTime = utcDate - timeAdjust();
   // Search the db and return up to 20 docs
-  var posts = newPost.find({ created_utc: { $gt : searchTime }}).sort({ created_utc:1 }).limit(20).exec(function(err, docs){
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(docs);
-    }
-  })
+  newPost
+    .find({ created_utc: { $gt : searchTime }})
+    .sort({ created_utc:1 })
+    .limit(20)
+    .exec()
+    .then(res.send)
+    .catch(console.warn);
 });
 
 app.listen(3030, function () {
   console.log('Example app listening on port 3030!')
-})
+});
