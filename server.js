@@ -34,7 +34,7 @@ app.get('/getPosts', function(req, res){
     .sort({ created_utc:1 })
     .limit(20)
     .exec()
-    .then(res.send)
+    .then(data => res.send(data))
     .catch(console.warn);
 });
 
