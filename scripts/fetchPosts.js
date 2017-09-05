@@ -17,7 +17,11 @@ function fetchPosts() {
     .then(parseHtmlJson)
     .then(insertNewPosts)
     .then(() => wait())
-    .then(fetchPosts);
+    .then(fetchPosts)
+    .catch(err => {
+      console.warn(err);
+      return wait(10).then(fetchPosts);
+    });
 }
 
 function wait(sec = 5) {
