@@ -14,12 +14,11 @@ var fetchedPost = new mongoose.Schema(
     author: 'string',
     fetchedAt: {
       type: Date,
-      default: new Date()
+      default: new Date(),
+      expires: 60
     }
   }, { collection: 'newposts'}
 );
-
-fetchedPost.index({ fetchedAt: 1 }, { expireAfterSeconds: 3600 });
 
 var newPost = mongoose.model('newPost', fetchedPost);
 

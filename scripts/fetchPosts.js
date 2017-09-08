@@ -52,7 +52,8 @@ function insertNewPosts(newPosts) {
       author: value.data.author,
       created_utc: value.data.created_utc,
       upvoteCount: value.data.ups,
-      commentCount: value.data.num_comments
+      commentCount: value.data.num_comments,
+      fetchedAt: new Date()
     }, { upsert: true }));
   });
 
