@@ -32,6 +32,7 @@ function wait(sec = 5) {
 
 function parseHtmlJson(htmlString) {
   var jsonData = JSON.parse(htmlString);
+  console.log(htmlString)
   return jsonData.data.children;
 }
 
