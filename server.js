@@ -31,7 +31,7 @@ app.get('/getPosts', function(req, res){
   // Search the db and return up to 20 docs
   newPost
     .find({ created_utc: { $gt : searchTime }})
-    .sort({ created_utc:1 })
+    .sort({ created_utc: 1 })
     .limit(20)
     .exec()
     .then(data => res.send(data))

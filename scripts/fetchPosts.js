@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost:27017/f5oclock');
 fetchPosts(); // start
 
 function fetchPosts() {
-  return rp('http://www.reddit.com/r/politics/rising/.json')
+  return rp('https://www.reddit.com/r/politics/search.json?q=&restrict_sr=on&sort=hot&t=hour')
     .then(parseHtmlJson)
     .then(insertNewPosts)
     .then(() => wait())
@@ -32,7 +32,6 @@ function wait(sec = 5) {
 
 function parseHtmlJson(htmlString) {
   var jsonData = JSON.parse(htmlString);
-  console.log(htmlString)
   return jsonData.data.children;
 }
 
