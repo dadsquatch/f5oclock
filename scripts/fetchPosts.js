@@ -14,10 +14,12 @@ mongoose.connect(config.mongo.uri);
 fetchPosts(); // start
 
 function fetchPosts() {
+  console.time('Rising Work Took');
   return rp('https://www.reddit.com/r/politics/search.json?q=&restrict_sr=on&sort=hot&t=hour')
     .then(parseHtmlJson)
     .then(insertNewPosts)
     .then(() => wait())
+    .then(() => { console.timeEnd('Rising Work Took'); })
     .then(fetchPosts)
     .catch(err => {
       console.warn(err);
