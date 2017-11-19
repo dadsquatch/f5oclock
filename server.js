@@ -22,9 +22,9 @@ app.get('/getPosts', function(req, res){
   var timeAdjust = function(){
     var today = new Date().getUTCHours();
     if (today >= 11 && today <= 23) {
-      return '1800'
-    } else {
       return '3600'
+    } else {
+      return '7200'
     }
   }
   var searchTime = utcDate - timeAdjust();
