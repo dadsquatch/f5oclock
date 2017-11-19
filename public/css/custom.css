@@ -8,6 +8,11 @@ body {
   margin-bottom: 120px;
 }
 
+.main-container {
+  padding: 0;
+  overflow: hidden;
+}
+
 /* My Custom Written Styles */
 
 .specifictd {
