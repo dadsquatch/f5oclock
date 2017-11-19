@@ -1,2 +1,2 @@
-web: node server.js
 worker: node scripts/fetchPosts.js
+web: node server.js
