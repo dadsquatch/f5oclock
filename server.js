@@ -4,17 +4,20 @@ var Q = require('q');
 var app = express();
 var mongoose = require('mongoose');
 mongoose.Promise = Q.Promise;
-mongoose.connect('mongodb://localhost/f5oclock');
 var _ = require('lodash');
 var rp = require('request-promise');
+var config = require('./config');
 var newPost = require('./models/newPost');
+var port = process.env.PORT || 3030;
+
+mongoose.connect(config.mongo.uri);
 
 app.use(express.static(__dirname + '/public'));
 app.engine('html', require('ejs').renderFile);
 
 app.get('/', function (req, res) {
   res.render('index.html');
-})
+});
 
 app.get('/getPosts', function(req, res){
   var utcDate = Math.floor((new Date()).getTime() / 1000);
@@ -38,6 +41,7 @@ app.get('/getPosts', function(req, res){
     .catch(console.warn);
 });
 
-app.listen(3030, function () {
-  console.log('Example app listening on port 3030!')
+
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port + '!');
 });

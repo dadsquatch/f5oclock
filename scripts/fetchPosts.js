@@ -6,17 +6,20 @@ mongoose.Promise = Q.Promise;
 var _ = require('lodash');
 var rp = require('request-promise');
 
-var newPost = require('../models/newPost')
+var newPost = require('../models/newPost');
+var config = require('../config');
 
-mongoose.connect('mongodb://localhost:27017/f5oclock');
+mongoose.connect(config.mongo.uri);
 
 fetchPosts(); // start
 
 function fetchPosts() {
+  console.time('Rising Work Took');
   return rp('https://www.reddit.com/r/politics/search.json?q=&restrict_sr=on&sort=hot&t=hour')
     .then(parseHtmlJson)
     .then(insertNewPosts)
     .then(() => wait())
+    .then(() => { console.timeEnd('Rising Work Took'); })
     .then(fetchPosts)
     .catch(err => {
       console.warn(err);
