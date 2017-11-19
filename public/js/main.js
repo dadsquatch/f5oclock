@@ -5,9 +5,9 @@ angular.module('myApp', ['angularMoment','ngclipboard'])
 
     var today = new Date().getUTCHours();
     if (today >= 11 && today <= 23) {
-      $scope.timeOfQuery = '30';
-    } else {
       $scope.timeOfQuery = '60';
+    } else {
+      $scope.timeOfQuery = '120';
     }
 
     $scope.setBackgroundColor = function(value){
