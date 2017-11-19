@@ -6,9 +6,10 @@ mongoose.Promise = Q.Promise;
 var _ = require('lodash');
 var rp = require('request-promise');
 
-var newPost = require('../models/newPost')
+var newPost = require('../models/newPost');
+var config = require('../config');
 
-mongoose.connect('mongodb://localhost:27017/f5oclock');
+mongoose.connect(config.mongo.uri);
 
 fetchPosts(); // start
 
