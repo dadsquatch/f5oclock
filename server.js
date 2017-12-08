@@ -33,7 +33,7 @@ app.get('/getPosts', function(req, res){
   var searchTime = utcDate - timeAdjust();
   // Search the db and return up to 20 docs
   newPost
-    .find({ created_utc: { $gt : searchTime }})
+    .find({ created_utc: { $gt : searchTime }}, { upvoteCount: {$gt : 5 }})
     .sort({ created_utc: 1 })
     .limit(20)
     .exec()
