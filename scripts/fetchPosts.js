@@ -20,7 +20,6 @@ function fetchPosts() {
     .then(insertNewPosts)
     .then(() => wait())
     .then(() => { console.timeEnd('Rising Work Took'); })
-    .then(checkInToMonitoring)
     .then(fetchPosts)
     .catch(err => {
       console.warn(err);
@@ -62,13 +61,4 @@ function insertNewPosts(newPosts) {
   });
 
   return Q.all(insertPromises);
-}
-
-
-function checkInToMonitoring() {
-  console.log(config.logToMonitoring, process.env.CHECK_IN_URL);
-  if (config.logToMonitoring && process.env.CHECK_IN_URL) {
-    console.log('checking in');
-    return rp(process.env.CHECK_IN_URL);
-  }
 }
