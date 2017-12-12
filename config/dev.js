@@ -3,5 +3,6 @@
 module.exports = {
   mongo: {
     uri: 'mongodb://localhost/f5oclock'
-  }
+  },
+  logToMonitoring: false
 };
