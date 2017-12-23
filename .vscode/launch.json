@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Fetch Script",
-      "program": "${workspaceRoot}\\scripts\\fetchPosts.js"
+      "program": "${workspaceRoot}\\scripts\\getPosts.js"
     }
   ]
 }
