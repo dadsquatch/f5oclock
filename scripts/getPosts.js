@@ -25,7 +25,7 @@ function transformData(data) {
       domain: d.domain,
       created_utc: d.created_utc,
       url: d.url,
-      commentLink: d.permaLink,
+      commentLink: d.permalink,
       thumbnail: d.thumbnail,
       upvoteCount: d.ups,
       commentCount: d.num_comments,
