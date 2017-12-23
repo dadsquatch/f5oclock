@@ -9,6 +9,15 @@
       "request": "launch",
       "name": "Launch Fetch Script",
       "program": "${workspaceRoot}\\scripts\\getPosts.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run server",
+      "program": "${workspaceRoot}\\server.js",
+      "env": {
+        "NODE_ENV": "dev"
+      }
     }
   ]
 }

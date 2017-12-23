@@ -21,10 +21,14 @@ app.get('/getPosts', function(req, res){
   if (!cachedPosts) {
     return getPosts()
       .then(function (posts) {
-        cache.set('politics', posts.filter(function (p) {
-          return p.upvoteCount;
-        }));
-        res.send(posts);
+        var utc = Math.floor(Date.now() / 1000) - timeAdjust();
+        var trimmed = posts.filter(function (p) {
+          return p.upvoteCount && p.created_utc >= utc;
+        });
+        cache.set('politics', trimmed);
+        res.send(trimmed);
+      }).catch(function (error) {
+        res.status(500).send(error);
       });
   }
   res.send(cachedPosts);
