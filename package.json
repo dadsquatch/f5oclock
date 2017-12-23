@@ -25,7 +25,7 @@
     "url": "git+https://github.com/dadsquatch/f5oclock.git"
   },
   "author": "IHB",
-  "license": "ISC",
+  "license": "SNCL 2.1.0",
   "bugs": {
     "url": "https://github.com/dadsquatch/f5oclock/issues"
   },
