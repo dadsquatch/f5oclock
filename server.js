@@ -21,7 +21,9 @@ app.get('/getPosts', function(req, res){
   if (!cachedPosts) {
     return getPosts()
       .then(function (posts) {
-        cache.set('politics', posts);
+        cache.set('politics', posts.filter(function (p) {
+          return p.upvoteCount;
+        }));
         res.send(posts);
       });
   }
