@@ -1,6 +1,6 @@
 {
   "name": "f5oclock.com",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "",
   "main": "server.js",
   "dependencies": {
@@ -25,7 +25,7 @@
     "url": "git+https://github.com/dadsquatch/f5oclock.git"
   },
   "author": "IHB",
-  "license": "ISC",
+  "license": "SNCL 2.1.0",
   "bugs": {
     "url": "https://github.com/dadsquatch/f5oclock/issues"
   },
