@@ -2,12 +2,15 @@
 var express = require('express');
 var Q = require('q');
 var app = express();
+var mongoose = require('mongoose');
+mongoose.Promise = Q.Promise;
 var _ = require('lodash');
-var NodeCache = require('node-cache');
+var rp = require('request-promise');
 var config = require('./config');
-var cache = new NodeCache(config.cache);
-var getPosts = require('./scripts/getPosts');
+var newPost = require('./models/newPost');
 var port = process.env.PORT || 3030;
+
+mongoose.connect(config.mongo.uri);
 
 app.use(express.static(__dirname + '/public'));
 app.engine('html', require('ejs').renderFile);
@@ -17,27 +20,27 @@ app.get('/', function (req, res) {
 });
 
 app.get('/getPosts', function(req, res){
-  var cachedPosts = cache.get('politics');
-  if (!cachedPosts) {
-    return getPosts()
-      .then(function (posts) {
-        var utc = Math.floor(Date.now() / 1000) - timeAdjust();
-        var trimmed = posts.filter(function (p) {
-          return p.upvoteCount && p.created_utc >= utc;
-        });
-        cache.set('politics', trimmed);
-        res.send(trimmed);
-      }).catch(function (error) {
-        res.status(500).send(error);
-      });
+  var utcDate = Math.floor((new Date()).getTime() / 1000);
+  // Depending on time per day 30 minute and 60 minute searches in database
+  var timeAdjust = function(){
+    var today = new Date().getUTCHours();
+    if (today >= 11 && today <= 23) {
+      return '3600'
+    } else {
+      return '7200'
+    }
   }
-  res.send(cachedPosts);
+  var searchTime = utcDate - timeAdjust();
+  // Search the db and return up to 20 docs
+  newPost
+    .find({ created_utc: { $gt : searchTime },  upvoteCount: { $gt : 5 }})
+    .sort({ created_utc: 1 })
+    .limit(20)
+    .exec()
+    .then(data => res.send(data))
+    .catch(console.warn);
 });
 
-function timeAdjust () {
-  var today = new Date().getUTCHours();
-  return (today >= 11 && today <= 23) ? '3600' : '7200';
-}
 
 app.listen(port, function () {
   console.log('Example app listening on port ' + port + '!');
