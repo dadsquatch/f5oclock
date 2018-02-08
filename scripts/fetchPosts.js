@@ -15,7 +15,7 @@ fetchPosts(); // start
 
 function fetchPosts() {
   console.time('Rising Work Took');
-  return rp('https://www.reddit.com/r/politics/search.json?q=&restrict_sr=on&sort=hot&t=hour')
+  return rp('https://www.reddit.com/r/politics/rising.json')
     .then(parseHtmlJson)
     .then(insertNewPosts)
     .then(() => wait())
