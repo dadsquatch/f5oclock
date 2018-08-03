@@ -1,15 +1,7 @@
 # f5oclock
 
-A ~MEAN~ (express, angular, node. No more mongo) stack based application that scrapes the JSON of r/politics/rising and asynchronously presents it to the user.
+This repository is used to collect issues and feedback for f5oclock.com
 
-## Development
-### Running Locally
-The application is very lightweight and easy to get running:
-1. `npm install`
-2. `node server.js`
+Source code for the current build of the site is no longer available publicly.
 
-### Heroku
-The application is configured to run on heroku. To run in heroku dyno locally:
-1. `heroku local`
-
-Pull requests welcome =)
+To report current issues, please use the [Issues](https://github.com/dadsquatch/f5oclock/issues) area.
